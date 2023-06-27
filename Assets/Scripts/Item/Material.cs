@@ -1,0 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+/// <summary>
+/// ≤ƒ¡œ¿‡
+/// </summary>
+public class Material : Item
+{
+    
+}
