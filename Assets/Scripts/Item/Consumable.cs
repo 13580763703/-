@@ -12,4 +12,21 @@ public class Consumable : Item
         this.HP = hp;
         this.MP = mp;
     }
+
+    public override string ToString()
+    {
+        string s = "";
+        s += ID.ToString();
+        s += Type;
+        s += Name;
+        s += Description;
+        s += Quality;
+        s += Capacity;
+        s += Buyprice;
+        s += Sellprice;
+        s += Sprite;
+        s += HP;
+        s += MP;
+        return s;
+    }
 }

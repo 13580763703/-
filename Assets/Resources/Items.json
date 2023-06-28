@@ -6,7 +6,7 @@
         "quality": "Common",
         "description": "回复20hp",
         "capacity": 10,
-        "butPrice": 10,
+        "buyPrice": 10,
         "sellPrice": 5,
         "hp": 20,
         "mp": 0,

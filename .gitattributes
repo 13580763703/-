@@ -1,0 +1,7 @@
+MSYH[[:space:]]SDF.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Fonts/MSYH[[:space:]]SDF.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Fonts/MSYH[[:space:]]SDF.asset
+git[[:space:]]lfs[[:space:]]track[[:space:]]Assets/Fonts/MSYH filter=lfs diff=lfs merge=lfs -text
+SDF.asset
+git[[:space:]]lfs[[:space:]]track[[:space:]]Assets/Fonts/MSYH filter=lfs diff=lfs merge=lfs -text
+SDF.asset filter=lfs diff=lfs merge=lfs -text
