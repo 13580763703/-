@@ -10,6 +10,6 @@
         "sellPrice": 5,
         "hp": 20,
         "mp": 0,
-        "sprite": "Sprites/Items/hp"
+        "sprite": "Sprite/Items/hp"
     }
 ]

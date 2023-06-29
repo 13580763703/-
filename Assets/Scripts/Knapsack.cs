@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Knapsack : MonoBehaviour
+public class Knapsack : Inventory
 {
-    // Start is called before the first frame update
-    void Start()
+    #region
+    private static Knapsack _instance;
+    public static Knapsack Instance
     {
-        
+        get
+        {
+            if(_instance == null)
+            {
+                _instance = GameObject.Find("KnapsackPanel").GetComponent<Knapsack>();
+            }
+            return _instance;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    #endregion
 }

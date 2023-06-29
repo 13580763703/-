@@ -70,4 +70,14 @@ public class InventoryManager : MonoBehaviour
             //Debug.Log(item);
         }
     }
+
+    public Item GetItemById(int id)
+    {
+        foreach(Item item in itemList)
+        {
+            if (item.ID == id)
+                return item;
+        }
+        return null;
+    }
 }
