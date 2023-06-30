@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Slot : MonoBehaviour
+public class Slot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 {
     public GameObject ItemPrefab;
     /// <summary>
@@ -36,6 +37,14 @@ public class Slot : MonoBehaviour
         return transform.GetChild(0).GetComponent<ItemUI>().Item.Type;
     }
     /// <summary>
+    /// 得到当前物品的id
+    /// </summary>
+    /// <returns></returns>
+    public int GetItemID()
+    {
+        return transform.GetChild(0).GetComponent<ItemUI>().Item.ID;
+    }
+    /// <summary>
     /// 检查同类型的item里面的物品个数是否大于额定数值.
     /// </summary>
     /// <returns></returns>
@@ -47,5 +56,20 @@ public class Slot : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (transform.childCount > 0)
+        {
+            string toolTipText = transform.GetChild(0).GetComponent<ItemUI>().Item.GetToolTipText();
+            InventoryManager.Instance.ShowToolTip(toolTipText);
+        }
+        
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        InventoryManager.Instance.HideToolTip();
     }
 }

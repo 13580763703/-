@@ -36,13 +36,14 @@ public class Equipment : Item
     {
         Head,
         Neck,
+        Chest,
         Ring,
         Shoulder,
         Leg,
         Boots,
         Trinket,
-        OffHand,
         Belt,
-        Bracer
+        Bracer,
+        Glove
     }
 }

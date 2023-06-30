@@ -79,7 +79,7 @@ public class Inventory : MonoBehaviour
     {
         foreach(Slot slot in slotLists)
         {
-            if(slot.transform.childCount>=1&& slot.GetItemType()==item.Type && slot.isFilled() == false)
+            if(slot.transform.childCount>=1&& slot.GetItemID()==item.ID && slot.isFilled() == false)
             {
                 return slot;
             }

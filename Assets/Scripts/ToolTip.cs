@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class ToolTip : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class ToolTip : MonoBehaviour
     private TMP_Text contentText;
     CanvasGroup convasGroup;
     public float smoothing = 1;
-    private float targetAlpha = 1;
+    private float targetAlpha = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,12 +37,16 @@ public class ToolTip : MonoBehaviour
     {
         toolTipText.text = text;
         contentText.text = text;
-        convasGroup.alpha = 1;
+        targetAlpha = 1;
     }
 
     public void Hide()
     {
-        convasGroup.alpha = 0;
+        targetAlpha = 0;
     }
 
+    public void SetLocalPosition(Vector2 position)
+    {
+        this.transform.localPosition= position;
+    }
 }

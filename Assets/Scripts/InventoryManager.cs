@@ -23,10 +23,27 @@ public class InventoryManager : MonoBehaviour
     #endregion
 
     private List<Item> itemList;
+    ToolTip toolTip;
+    private Canvas canvas;
+    private bool isToolTipShow = false;
+    private Vector2 toolTipPositionOffset = new Vector2(15, -15);
 
     private void Start()
     {
         ParseItemJson();
+        toolTip = GameObject.FindObjectOfType<ToolTip>();
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();  
+    }
+
+    private void Update()
+    {
+        if (isToolTipShow)
+        {
+            Vector2 position;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, null, out position);
+            toolTip.SetLocalPosition(position+toolTipPositionOffset);
+        }
+
     }
     /// <summary>
     /// 解析物品信息
@@ -60,6 +77,12 @@ public class InventoryManager : MonoBehaviour
                     item = new Consumable(id, name, description, type, quality, capacity, buyPrice, sellPrice, sprite, hp, mp);
                     break;
                 case Item.ItemType.Equipment:
+                    int strength = int.Parse(temp["strength"].ToString());
+                    int intellect = int.Parse(temp["intellect"].ToString());
+                    int agility = int.Parse(temp["agility"].ToString());
+                    int stamina = int.Parse(temp["stamina"].ToString());
+                    Equipment.EquipmentType equipmentType = (Equipment.EquipmentType)System.Enum.Parse(typeof(Equipment.EquipmentType), temp["equipType"].stringValue);
+                    item = new Equipment(id, name, description, type, quality, capacity, buyPrice, sellPrice, sprite, strength, intellect, agility, stamina, equipmentType);
                     break;
                 case Item.ItemType.Weapon:
                     break;
@@ -79,5 +102,17 @@ public class InventoryManager : MonoBehaviour
                 return item;
         }
         return null;
+    }
+
+    public void ShowToolTip(string content)
+    {
+        toolTip.Show(content);
+        isToolTipShow = true;
+    }
+
+    public void HideToolTip()
+    {
+        toolTip.Hide();
+        isToolTipShow= false;
     }
 }
