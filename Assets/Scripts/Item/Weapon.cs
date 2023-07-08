@@ -21,4 +21,22 @@ public class Weapon : Item
         MainHand,
         OffHand
     }
+
+    public override string GetToolTipText()
+    {
+        string text = base.GetToolTipText();
+        string newtext = "";
+        string weapon = "";
+        switch (WpType)
+        {
+            case WeaponType.MainHand:
+                weapon = "Ö÷ÎäÆ÷";
+                break;
+            case WeaponType.OffHand:
+                weapon = "¸±ÎäÆ÷";
+                break;
+        }
+        newtext = string.Format("{0}\n<color=blue>{1}</color>\n<color=orange><size=10>¹¥»÷Á¦:{2}</size></color>\n", text,weapon,Damage);
+        return newtext;
+    }
 }

@@ -107,15 +107,17 @@ m_ResolvedPackages:
     - 2.0.1
     - 2.0.3
     - 2.0.4
+    - 2.0.5
     - 2.1.0-preview.3
     - 2.1.0-preview.5
     - 2.1.0-preview.6
     compatible:
     - 2.0.4
+    - 2.0.5
     - 2.1.0-preview.3
     - 2.1.0-preview.5
     - 2.1.0-preview.6
-    recommended: 2.0.4
+    recommended: 2.0.5
     deprecated: []
   dependencies: []
   resolvedDependencies: []
@@ -519,6 +521,7 @@ m_ResolvedPackages:
     - 1.6.2
     - 1.6.3
     - 1.6.4
+    - 1.6.5
     - 1.7.0-pre.1
     - 1.7.0-pre.2
     - 1.7.0
@@ -526,15 +529,21 @@ m_ResolvedPackages:
     - 1.7.2
     - 1.7.3
     - 1.7.4
+    - 1.7.5
     - 1.8.0
     - 1.8.1
     - 1.8.2
+    - 1.8.3
+    - 1.8.4
     compatible:
     - 1.7.4
+    - 1.7.5
     - 1.8.0
     - 1.8.1
     - 1.8.2
-    recommended: 1.7.4
+    - 1.8.3
+    - 1.8.4
+    recommended: 1.7.5
     deprecated: []
   dependencies:
   - name: com.unity.modules.director
@@ -610,6 +619,7 @@ m_ResolvedPackages:
   versions:
     all:
     - 1.0.0
+    - 3.0.0-exp.1
     compatible:
     - 1.0.0
     recommended: 1.0.0
@@ -2794,9 +2804,11 @@ m_ResolvedPackages:
     - 3.0.18
     - 3.0.20
     - 3.0.21
+    - 3.0.22
     compatible:
     - 3.0.21
-    recommended: 3.0.21
+    - 3.0.22
+    recommended: 3.0.22
     deprecated: []
   dependencies:
   - name: com.unity.ext.nunit
@@ -3094,6 +3106,8 @@ m_ResolvedPackages:
     - 1.3.2
     - 1.3.3
     - 1.3.4
+    - 1.3.5
+    - 1.3.7
     - 2.0.1-exp.1
     - 2.0.1-exp.2
     - 2.0.1-pre.12
@@ -3105,6 +3119,8 @@ m_ResolvedPackages:
     - 1.3.2
     - 1.3.3
     - 1.3.4
+    - 1.3.5
+    - 1.3.7
     - 2.0.1-exp.1
     - 2.0.1-exp.2
     - 2.0.1-pre.12
@@ -3206,9 +3222,11 @@ m_ResolvedPackages:
     - 1.2.1
     - 1.2.2
     - 1.2.3
+    - 1.2.4
     compatible:
     - 1.2.3
-    recommended: 1.2.3
+    - 1.2.4
+    recommended: 1.2.4
     deprecated: []
   dependencies:
   - name: com.unity.test-framework
@@ -3348,10 +3366,14 @@ m_ResolvedPackages:
     - 1.0.6
     - 2.0.2
     - 2.0.3
+    - 2.0.4
+    - 2.0.5
     compatible:
     - 1.0.6
     - 2.0.2
     - 2.0.3
+    - 2.0.4
+    - 2.0.5
     recommended: 1.0.6
     deprecated: []
   dependencies: []

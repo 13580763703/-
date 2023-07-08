@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Weapon;
 
 public class Consumable : Item
 {
@@ -28,5 +29,13 @@ public class Consumable : Item
         s += HP;
         s += MP;
         return s;
+    }
+
+    public override string GetToolTipText()
+    {
+        string text = base.GetToolTipText();
+        string newtext = "";
+        newtext = string.Format("{0}\n<color=blue><size=10>消耗品</color>\n<color=orange>加血:{1}\n加蓝:{2}</size></color>\n", text,HP,MP);
+        return newtext;
     }
 }

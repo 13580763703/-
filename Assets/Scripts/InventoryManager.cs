@@ -22,26 +22,66 @@ public class InventoryManager : MonoBehaviour
     }
     #endregion
 
-    private List<Item> itemList;
+    #region ToolTip
+
     ToolTip toolTip;
-    private Canvas canvas;
     private bool isToolTipShow = false;
     private Vector2 toolTipPositionOffset = new Vector2(15, -15);
+
+    #endregion
+
+    private List<Item> itemList;
+    private Canvas canvas;
+    private bool isPickedItem = false;
+    private ItemUI pickedItem;
+    public ItemUI PickedItem
+    {
+        get
+        {
+            return pickedItem;
+        }
+    }
+     public bool IsPickedItem
+    {
+        get
+        {
+            return isPickedItem;
+        }
+        set
+        {
+            isPickedItem = value;
+        }
+    }
 
     private void Start()
     {
         ParseItemJson();
         toolTip = GameObject.FindObjectOfType<ToolTip>();
-        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();  
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        pickedItem = GameObject.Find("PickedItem").GetComponent<ItemUI>();
+        pickedItem.Hide();
     }
 
     private void Update()
     {
-        if (isToolTipShow)
+        if (isPickedItem)
+        {
+            Vector2 position;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, null, out position);
+            pickedItem.SetLocalPosition(position);
+        }
+        else if (isToolTipShow)
         {
             Vector2 position;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, null, out position);
             toolTip.SetLocalPosition(position+toolTipPositionOffset);
+        }
+
+        //物品丢弃的处理
+        if (isPickedItem && Input.GetMouseButtonDown(0) && UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(-1) == false)
+        {
+            isPickedItem = false;
+            pickedItem.Hide();
         }
 
     }
@@ -85,8 +125,12 @@ public class InventoryManager : MonoBehaviour
                     item = new Equipment(id, name, description, type, quality, capacity, buyPrice, sellPrice, sprite, strength, intellect, agility, stamina, equipmentType);
                     break;
                 case Item.ItemType.Weapon:
+                    int damage = int.Parse(temp["damage"].ToString());
+                    Weapon.WeaponType wpType = (Weapon.WeaponType)System.Enum.Parse(typeof(Weapon.WeaponType), temp["wpType"].stringValue);
+                    item = new Weapon(id, name, description, type, quality, capacity, buyPrice, sellPrice, sprite, damage, wpType);
                     break;
                 case Item.ItemType.Material:
+                    item = new Material(id, name, description, type, quality, capacity, buyPrice, sellPrice, sprite);
                     break;
             }
             itemList.Add(item);
@@ -106,13 +150,35 @@ public class InventoryManager : MonoBehaviour
 
     public void ShowToolTip(string content)
     {
-        toolTip.Show(content);
-        isToolTipShow = true;
+        if (isPickedItem == false)
+        {
+            toolTip.Show(content);
+            isToolTipShow = true;
+        }
     }
 
     public void HideToolTip()
     {
         toolTip.Hide();
         isToolTipShow= false;
+    }
+
+    public void PickupItem(Item item,int amount)
+    {
+        pickedItem.SetItem(item, amount);
+        pickedItem.Show();
+        toolTip.Hide();
+        IsPickedItem = true;    
+    }
+
+
+    public void ReduceAmount(int amount = 1)
+    {
+        pickedItem.ReduceAmount(amount);
+        if (pickedItem.Amount <= 0)
+        {
+            pickedItem.Hide();
+            isPickedItem = false;
+        }
     }
 }

@@ -64,7 +64,32 @@ public class Item
     /// <returns></returns>
     public virtual string GetToolTipText()
     {
-        return Name;//TODO
+        string color = "";
+        switch (Quality)
+        {
+            case ItemQuality.Common:
+                color = "white";
+                break;
+            case ItemQuality.Unmmon:
+                color = "green";
+                break;
+            case ItemQuality.Rare:
+                color = "blue";
+                break;
+            case ItemQuality.Epic:
+                color = "purple";
+                break;
+            case ItemQuality.Legendary:
+                color = "orange";
+                break;
+            case ItemQuality.Artifact:
+                color = "red";
+                break;
+        }
+
+        string text = string.Format("<color={4}>{0}</color>\n<size=10>说明:{1}</size>\n<size=10>购买价格:{2}  售出价格{3}</size>",Name,Description,Buyprice,Sellprice,color);
+
+        return text;
     }
 }
     

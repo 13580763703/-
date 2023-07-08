@@ -356,6 +356,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 -analyzer:"D:/Unity/2022.3.0f1c1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"D:/Unity/2022.3.0f1c1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
+"Assets/Scripts/Chest.cs"
 "Assets/Scripts/Inventory.cs"
 "Assets/Scripts/InventoryManager.cs"
 "Assets/Scripts/Item/Consumable.cs"

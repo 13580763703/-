@@ -5,10 +5,27 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public Slot[] slotLists;
+    private float targetAlpha=1;
+    private float smoothing = 5;
+    private CanvasGroup canvasGroup;
+
 
     public virtual void Start()
     {
         slotLists = GetComponentsInChildren<Slot>();
+        canvasGroup = GetComponent<CanvasGroup>();
+    }
+
+    private void Update()
+    {
+        if(canvasGroup.alpha != targetAlpha)
+        {
+            canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, targetAlpha, smoothing*Time.deltaTime);
+            if (Mathf.Abs(canvasGroup.alpha - targetAlpha) < .01f)
+            {
+                canvasGroup.alpha = targetAlpha;
+            }
+        }
     }
 
     public bool StoreItem(int id)
@@ -85,5 +102,30 @@ public class Inventory : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void Show()
+    {
+        canvasGroup.blocksRaycasts = true;
+        targetAlpha = 1;
+    }
+
+    public void Hide()
+    {
+        canvasGroup.blocksRaycasts = false;
+        targetAlpha = 0;
+    }
+
+    public void DisplaySwitch()
+    {
+        if(targetAlpha == 0)
+        {
+
+            Show();
+        }
+        else
+        {
+            Hide();
+        }
     }
 }

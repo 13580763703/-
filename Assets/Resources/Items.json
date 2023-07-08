@@ -184,5 +184,64 @@
         "agility": 4,
         "stamina": 10,
         "equipType": "Shoulder"
+    },
+    {
+        "id": 13,
+        "name": "斧头",
+        "type": "Weapon",
+        "quality": "Common",
+        "description": "普通的斧头",
+        "capacity": 1,
+        "buyPrice": 30,
+        "sellPrice": 20,
+        "sprite": "Sprite/Items/axe",
+        "damage": 12,
+        "wpType": "MainHand"
+    },
+    {
+        "id": 14,
+        "name": "神秘之剑",
+        "type": "Weapon",
+        "quality": "Rare",
+        "description": "神秘的剑,它的身上似乎有什么秘密...",
+        "capacity": 1,
+        "buyPrice": 300,
+        "sellPrice": 150,
+        "sprite": "Sprite/Items/sword",
+        "damage": 120,
+        "wpType": "MainHand"
+    },
+    {
+        "id": 15,
+        "name": "大经验书",
+        "type": "Material",
+        "quality": "Rare",
+        "description": "稀有品质的经验书,可以增加1000xp",
+        "capacity": 1,
+        "buyPrice": 300,
+        "sellPrice": 150,
+        "sprite": "Sprite/Items/book"
+    },
+    {
+        "id": 16,
+        "name": "经验书",
+        "type": "Material",
+        "quality": "Unmmon",
+        "description": "普通的经验书,可以增加100xp",
+        "capacity": 1,
+        "buyPrice": 30,
+        "sellPrice": 15,
+        "sprite": "Sprite/Items/scroll"
+    },
+    {
+        "id": 17,
+        "name": "铁锭",
+        "type": "Material",
+        "quality": "Common",
+        "description": "小经验书,可以增加10xp",
+        "capacity": 1,
+        "buyPrice": 10,
+        "sellPrice": 5,
+        "sprite": "Sprite/Items/ingots"
     }
 ]
