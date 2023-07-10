@@ -75,8 +75,34 @@ public class Slot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPoin
         InventoryManager.Instance.HideToolTip();
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public virtual void OnPointerDown(PointerEventData eventData)
     {
+        if(eventData.button == PointerEventData.InputButton.Right)
+        {
+            if(transform.childCount > 0)
+            {
+                ItemUI currentItem = transform.GetChild(0).GetComponent<ItemUI>();
+                if(currentItem.Item is Equipment || currentItem.Item is Weapon)
+                {
+                    currentItem.ReduceAmount(1);
+                    Item item = currentItem.Item;
+                    if (currentItem.Amount <= 0)
+                    {
+                        InventoryManager.Instance.HideToolTip();
+                        DestroyImmediate(currentItem.gameObject);
+                    }
+                    CharacterPanel.Instance.PutOn(item);
+                    
+                }
+            }
+            else
+            {
+
+            }
+        }
+
+        if (eventData.button != PointerEventData.InputButton.Left) return;
+
         if(transform.childCount > 0)//在这个背包格子有物品存在时
         {
             ItemUI currentItem = transform.GetChild(0).GetComponent<ItemUI>();

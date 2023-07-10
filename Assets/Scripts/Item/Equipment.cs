@@ -36,6 +36,7 @@ public class Equipment : Item
 
     public enum EquipmentType
     {
+        None,
         Head,
         Neck,
         Chest,

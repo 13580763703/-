@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public Slot[] slotLists;
+    protected Slot[] slotLists;
     private float targetAlpha=1;
     private float smoothing = 5;
     private CanvasGroup canvasGroup;
