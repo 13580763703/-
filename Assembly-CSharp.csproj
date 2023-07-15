@@ -58,21 +58,25 @@
     <Analyzer Include="D:\Unity\2022.3.0f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Chest.cs" />
+    <Compile Include="Assets\Scripts\VenderSlot.cs" />
+    <Compile Include="Assets\Scripts\Formula.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Knapsack.cs" />
     <Compile Include="Assets\Scripts\Slot.cs" />
+    <Compile Include="Assets\Scripts\Inventory\CharacterPanel.cs" />
     <Compile Include="Assets\Scripts\Item\Material.cs" />
-    <Compile Include="Assets\Scripts\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Item\Weapon.cs" />
     <Compile Include="Assets\Scripts\InventoryManager.cs" />
     <Compile Include="Assets\Scripts\Item\Equipment.cs" />
     <Compile Include="Assets\Scripts\Item\Consumable.cs" />
     <Compile Include="Assets\Scripts\Item\Item.cs" />
-    <Compile Include="Assets\Scripts\CharacterPanel.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\EquipmentSlot.cs" />
+    <Compile Include="Assets\Forge.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Chest.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Vender.cs" />
     <Compile Include="Assets\Scripts\ItemUI.cs" />
     <Compile Include="Assets\Scripts\ToolTip.cs" />
-    <Compile Include="Assets\Scripts\Knapsack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

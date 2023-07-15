@@ -7,9 +7,23 @@ public class EquipmentSlot : Slot
 {
     public Equipment.EquipmentType equipType;
     public Weapon.WeaponType wpType;
+    private bool isUpdateProperty = false;
 
     public override void OnPointerDown(PointerEventData eventData)
     {
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            if(InventoryManager.Instance.IsPickedItem==false && transform.childCount > 0)
+            {
+                ItemUI currentItem = transform.GetChild(0).GetComponent<ItemUI>();
+                Item itemTemp = currentItem.Item;
+                DestroyImmediate(currentItem.gameObject);
+                transform.parent.SendMessage("PutOff", itemTemp);
+                InventoryManager.Instance.HideToolTip();
+                isUpdateProperty = true;
+            }
+        }
+        if (eventData.button != PointerEventData.InputButton.Left) return;
         if (InventoryManager.Instance.IsPickedItem)
         {
             ItemUI pickedItem = InventoryManager.Instance.PickedItem;
@@ -18,11 +32,12 @@ public class EquipmentSlot : Slot
                 ItemUI currentItemUI = transform.GetChild(0).GetComponent<ItemUI>();
                 if(IsRightItem(pickedItem.Item))
                 {
-                        //Item item = currentItemUI.Item;
-                        //int amount = currentItemUI.Amount;
-                        //currentItemUI.SetItem(pickedItem.Item, pickedItem.Amount);
-                        //pickedItem.SetItem(item, amount);
-                        InventoryManager.Instance.PickedItem.Exchange(currentItemUI);
+                    //Item item = currentItemUI.Item;
+                    //int amount = currentItemUI.Amount;
+                    //currentItemUI.SetItem(pickedItem.Item, pickedItem.Amount);
+                    //pickedItem.SetItem(item, amount);
+                    InventoryManager.Instance.PickedItem.Exchange(currentItemUI);
+                    isUpdateProperty = true;
                  }
             }
             else
@@ -31,6 +46,7 @@ public class EquipmentSlot : Slot
                 {
                     this.StoreItem(pickedItem.Item);
                     InventoryManager.Instance.ReduceAmount(1);
+                    isUpdateProperty = true;
                 }
             }
         }
@@ -42,6 +58,10 @@ public class EquipmentSlot : Slot
                 InventoryManager.Instance.PickupItem(currentItemUI.Item, currentItemUI.Amount);
                 Destroy(currentItemUI.gameObject);
             }
+        }
+        if (isUpdateProperty)
+        {
+            transform.parent.SendMessage("UpdatePropertyText");
         }
     }
 
